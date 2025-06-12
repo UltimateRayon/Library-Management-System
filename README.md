@@ -38,3 +38,20 @@ A simple Java-based Library Management System that allows users to register, log
 
 ## 📁 Project Structure (Simplified)
 
+src/
+├── app/
+│ ├── Main.java
+│ └── Menu.java
+├── model/
+│ ├── User.java
+│ └── Book.java
+├── dao/
+│ ├── UserDAO.java
+│ └── BookDAO.java
+├── service/
+│ ├── AuthService.java
+│ └── LibraryService.java
+├── util/
+│ ├── InputHelper.java
+│ └── PasswordUtil.java
+
