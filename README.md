@@ -66,7 +66,7 @@ Follow the steps below to run the Library Management System locally using Maven 
  OR, Open the project in IntelliJ IDEA:  
    a. Right-click on Main.java → Click “Run”  
 
-  💡Tip: If Maven asks for the exec plugin, add this snippet to your pom.xml:
+  💡Tip: If Maven asks for the exec plugin, add this snippet to your `pom.xml`:
     
     <build>
      <plugins>
