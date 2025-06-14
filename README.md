@@ -61,9 +61,12 @@ Follow the steps below to run the Library Management System locally using Maven 
    private static final String PASSWORD = "your_password";
 
 4. In terminal (from the project root):  
-   a. Compile the project:    mvn clean compile  
-   b. Run the main class:     mvn exec:java -Dexec.mainClass="com.library.Main"  
- OR, Open the project in IntelliJ IDEA:  
+   a. Compile the project:  
+   ```mvn clean compile```  
+   b. Run the main class:  
+   ```mvn exec:java -Dexec.mainClass="com.library.Main"```  
+ 
+   OR, Open the project in IntelliJ IDEA:  
    a. Right-click on Main.java → Click “Run”  
 
   💡Tip: If Maven asks for the exec plugin, add this snippet to your `pom.xml`:
