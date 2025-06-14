@@ -80,4 +80,8 @@ Follow the steps below to run the Library Management System locally using Maven 
       </plugin>
      </plugins>
     </build>
+
+---
     
+ ## 📄 License
+ This project is part of an academic submission and is not intended for commercial use.
