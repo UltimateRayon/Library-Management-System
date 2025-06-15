@@ -6,7 +6,7 @@ import java.util.Scanner;
 
         private static final Scanner scanner = new Scanner(System.in);
 
-        // Get a non-empty string from user
+        // Get a non-empty string from user.
         public static String getString(String prompt) {
             String input;
             do {
