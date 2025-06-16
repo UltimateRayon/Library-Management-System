@@ -6,14 +6,14 @@ import java.util.Scanner;
 
         private static final Scanner scanner = new Scanner(System.in);
 
-        // Get a non-empty string from user.
+        // Get a non-empty string from user
         public static String getString(String prompt) {
             String input;
             do {
                 System.out.print(prompt);
                 input = scanner.nextLine().trim();
                 if (input.isEmpty()) {
-                    System.out.println("❌ Input cannot be empty. Please try again.");
+                    System.out.println("Input cannot be empty. Please try again.");
                 }
             } while (input.isEmpty());
             return input;
@@ -27,12 +27,12 @@ import java.util.Scanner;
                 try {
                     return Integer.parseInt(input);
                 } catch (NumberFormatException e) {
-                    System.out.println("❌ Please enter a valid integer.");
+                    System.out.println("Please enter a valid integer.");
                 }
             }
         }
 
-        // Get a valid double from user
+        // Get a valid double from user.
         public static double getDouble(String prompt) {
             while (true) {
                 System.out.print(prompt);
@@ -40,7 +40,7 @@ import java.util.Scanner;
                 try {
                     return Double.parseDouble(input);
                 } catch (NumberFormatException e) {
-                    System.out.println("❌ Please enter a valid number.");
+                    System.out.println("Please enter a valid number.");
                 }
             }
         }
