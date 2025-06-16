@@ -32,7 +32,7 @@ import java.util.Scanner;
             }
         }
 
-        // Get a valid double from user.
+        // Get a valid double from user
         public static double getDouble(String prompt) {
             while (true) {
                 System.out.print(prompt);
