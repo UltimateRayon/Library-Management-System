@@ -45,7 +45,7 @@ import java.util.Scanner;
             }
         }
 
-        // Optional: close the scanner if needed
+        // close the scanner if needed
         public static void closeScanner() {
             scanner.close();
         }
