@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c77fe5-d3df-4eed-8282-4c34f1e9899f" name="Changes" comment="Merge pull request #4 from UltimateRayon/dev&#10;&#10;Dev">
-      <changelist_data name="Mushfiq Iqbal Rayon" email="83185043+ultimaterayon@users.noreply.github.com" automatic="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/library/ui/Register.java" afterDir="false" />
+
+    <list default="true" id="f6c77fe5-d3df-4eed-8282-4c34f1e9899f" name="Changes" comment="updated InputHandler">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/ui/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/utils/PasswordHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/utils/PasswordHelper.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,15 +50,12 @@
       </list>
     </option>
   </component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/UltimateRayon/Library-Management-System&quot;,
-    &quot;accountId&quot;: &quot;2b22f082-3805-4a06-b796-bdf6e0dc44e4&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/UltimateRayon/Library-Management-System.git",
+    "accountId": "ecf12803-d823-4cce-bf62-d38a62d60f60"
   }
-}</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
-  </component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -74,9 +72,12 @@
     "Application.Main.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "edited",
+
+    "git-widget-placeholder": "Fahim__HASH",
+
     "last_opened_file_path": "D:/Software Development/Library Management System/Library-Management-System",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -91,6 +92,17 @@
       <recent name="D:\Software Development\Library Management System\Library-Management-System\src\resources" />
       <recent name="D:\Software Development\Library Management System\Library-Management-System\src" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration>C:\Users\Lenovo T490s\AppData\Roaming\Subversion</configuration>
@@ -137,6 +149,17 @@
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project tree created" />
