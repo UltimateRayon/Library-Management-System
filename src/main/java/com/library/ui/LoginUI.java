@@ -1,24 +1,26 @@
 package com.library.ui;
 
+import com.library.models.User;
+import com.library.services.UserService;
 import com.library.utils.InputHandler;
 
 public class LoginUI {
+    private final UserService userService = new UserService();
 
-    private final String validPassword = "Abc@123";
-    private final int validId = 12345;
+    /** Shows prompts and returns the logged‑in User (or null) */
+    public User setValueForLogIn() {
+        System.out.println("🔐 Log In");
 
-    public void setValueForLogIn() {
-        int id = InputHandler.getInt("Enter your Id: ");
+        String id = InputHandler.getString("Enter your ID: ");
         String password = InputHandler.getString("Enter your password: ");
 
-        validateCredentials(id, password);
-    }
-
-    private void validateCredentials(int id, String password) {
-        if (id == validId && password.equals(validPassword)) {
-            System.out.println("Login Successful!");
+        User user = userService.login(id, password);
+        if (user != null) {
+            System.out.println("✅ Welcome back, " + user.getName() + "!");
         } else {
-            System.out.println("Invalid Id or Password. Please try again.");
+            System.out.println("❌ Invalid ID or password.");
+            setValueForLogIn();
         }
+            return user;
     }
 }
