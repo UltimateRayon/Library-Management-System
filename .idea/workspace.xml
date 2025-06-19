@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="f6c77fe5-d3df-4eed-8282-4c34f1e9899f" name="Changes" comment="updated InputHandler">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/library/utils/PasswordHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/utils/PasswordHelper.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +25,14 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Mushfiq Iqbal Rayon &lt;83185043+ultimaterayon@users.noreply.github.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-mushfiq" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,12 +69,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+
     "git-widget-placeholder": "Fahim__HASH",
+
     "last_opened_file_path": "D:/Software Development/Library Management System/Library-Management-System",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -154,6 +164,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project tree created" />
     <MESSAGE value="updated InputHandler" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated InputHandler" />
+    <MESSAGE value="Merge pull request #4 from UltimateRayon/dev&#10;&#10;Dev" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge pull request #4 from UltimateRayon/dev&#10;&#10;Dev" />
   </component>
 </project>
