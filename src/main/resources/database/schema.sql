@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS transaction_history;
 DROP TABLE IF EXISTS book_collection;
 DROP TABLE IF EXISTS users;
 
+
 -- users table (id changed to string form)
 CREATE TABLE users (
     id VARCHAR(50) PRIMARY KEY,
@@ -61,3 +62,4 @@ INSERT INTO book_collection (id, title, author, genre, total_copies) VALUES
 ('B020', 'A Brief History of Time', 'Stephen Hawking', 'Science', 6),
 ('B021', 'Atomic Habits', 'James Clear', 'Self-help', 6),
 ('B022', 'To Kill a Mockingbird', 'Harper Lee', 'Fiction', 6);
+
