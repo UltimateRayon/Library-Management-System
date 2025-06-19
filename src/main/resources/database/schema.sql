@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS transaction_history;
 DROP TABLE IF EXISTS book_collection;
 DROP TABLE IF EXISTS users;
 
--- users table
+-- users table (id changed to string form)
 CREATE TABLE users (
     id VARCHAR(50) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL
 );
 
---  Create book_collection table
+--  book_collection table (id changed to string form)
 CREATE TABLE book_collection (
     id VARCHAR(50) PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -29,7 +29,8 @@ CREATE TABLE transaction_history (
     transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- sample books (you will need to give string IDs now)
+
+-- sample books (20+ entries with at least 5 copies, 1 library copy)
 INSERT INTO book_collection (id, title, author, genre, total_copies) VALUES
 -- Dan Brown Books
 ('B001', 'Angels & Demons', 'Dan Brown', 'Thriller', 6),
