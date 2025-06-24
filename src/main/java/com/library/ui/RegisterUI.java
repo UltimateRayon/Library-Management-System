@@ -33,7 +33,7 @@ public class RegisterUI {
                 System.out.println("Passwords do not match. Try again.");
             }
             isPasswordValid= passCheck.isValidPassword(password);
-        } while (!password.equals(repassword) && !isPasswordValid);
+        } while (!password.equals(repassword) || !isPasswordValid);
 
         boolean success = userService.register(id, name, phone, password);
         if (success) {

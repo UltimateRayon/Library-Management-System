@@ -4,11 +4,11 @@ public class InputValidator {
     public boolean isValidPassword(String password) {
         boolean isValid = true;
 
-        if (!hasMinimumLength(password)) isValid = false;
-        if (!hasSpecialCharacter(password)) isValid = false;
-        if (!hasUppercaseLetter(password)) isValid = false;
-        if (!hasLowercaseLetter(password)) isValid = false;
-        if (!hasDigit(password)) isValid = false;
+        isValid= hasMinimumLength(password);
+        isValid= hasSpecialCharacter(password);
+        isValid= hasUppercaseLetter(password);
+        isValid= hasLowercaseLetter(password);
+        isValid= hasDigit(password);
 
         return isValid;
     }
