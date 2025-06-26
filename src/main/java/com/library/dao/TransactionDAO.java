@@ -1,28 +1,33 @@
 package com.library.dao;
 
 import com.library.utils.DatabaseConnection;
+import jdk.jfr.StackTrace;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.Instant;
 
 public class TransactionDAO {
 
 
     public boolean bookCheckOut(String bookName, String userID) {
         String sql = """
-                    SELECT * INSERT INTO transaction_history (transaction_id, user_id, book_id, transaction_date) VALUES
-                    (1, ?, ?, 10)
+                    INSERT INTO transaction_history (transaction_date, user_id, book_name) VALUES
+                    (?, ?, ?)
                     """;
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, userID);
-            stmt.setString(2, bookName);
-            stmt.executeQuery();
-
+            Timestamp timestamp = Timestamp.from(Instant.now());
+            stmt.setTimestamp(1, timestamp);
+            stmt.setString(2, userID);
+            stmt.setString(3, bookName);
+            int rowsAffected = stmt.executeUpdate();
+            if(rowsAffected>0){
+                return true;
+            }
         } catch (SQLException e) {
             System.err.println("❌ Error checking out book: " + e.getMessage());
+            e.printStackTrace();
         }
         return false;
     }
