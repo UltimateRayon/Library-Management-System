@@ -25,6 +25,10 @@ public class Main {
                     if (user != null) {
                         MainMenuUI menu = new MainMenuUI(user);
                     }
+                    else
+                    {
+                        System.out.println("Error Login! Try again");
+                    }
                 }
                 case "0" -> {
                     System.out.println("Goodbye!");

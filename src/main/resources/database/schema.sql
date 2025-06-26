@@ -15,7 +15,7 @@ CREATE TABLE users (
 --  book_collection table (id changed to string form)
 CREATE TABLE book_collection (
     id VARCHAR(50) PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL UNIQUE,
     author VARCHAR(100) NOT NULL,
     genre VARCHAR(50),
     total_copies INTEGER NOT NULL CHECK (total_copies > 0),
@@ -24,10 +24,10 @@ CREATE TABLE book_collection (
 
 --  Create transaction_history table
 CREATE TABLE transaction_history (
-    transaction_id VARCHAR(50) PRIMARY KEY,
+
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP PRIMARY KEY,
     user_id VARCHAR(50) NOT NULL REFERENCES users(id),
-    book_id VARCHAR(50) NOT NULL REFERENCES book_collection(id),
-    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    book_name VARCHAR(50) NOT NULL REFERENCES book_collection(title),
 );
 
 
