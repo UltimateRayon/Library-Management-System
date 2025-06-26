@@ -24,10 +24,10 @@ CREATE TABLE book_collection (
 
 --  Create transaction_history table
 CREATE TABLE transaction_history (
-    transaction_id VARCHAR(50) PRIMARY KEY,
+
+    transaction_date TIMESTAMP PRIMARY KEY CURRENT_TIMESTAMP
     user_id VARCHAR(50) NOT NULL REFERENCES users(id),
-    book_id VARCHAR(50) NOT NULL REFERENCES book_collection(id),
-    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    book_name VARCHAR(50) NOT NULL REFERENCES book_collection(title),
 );
 
 
