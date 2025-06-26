@@ -49,4 +49,20 @@ public class BookDAO {
         }
         return null;
     }
+    public boolean bookReduce(String bookName){
+        String sql = """
+                UPDATE book_collection
+                SET total_copies = total_copies - 1
+                WHERE title = ?;
+                """;
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, bookName);
+            ResultSet rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            System.err.println("❌ Error updating book availability: " + e.getMessage());
+        }
+        return false;
+    }
 }

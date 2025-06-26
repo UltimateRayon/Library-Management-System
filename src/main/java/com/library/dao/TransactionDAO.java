@@ -1,20 +1,29 @@
 package com.library.dao;
 
+import com.library.utils.DatabaseConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class TransactionDAO {
 
-/*
-    public void checkOut(int userId, int bookId){
 
-        String sql = "INSERT INTO checkouts (user_id, book_id, checkout_date) VALUES (?, ?, CURRENT_DATE)";
-        // use JDBC to execute
+    public boolean bookCheckOut(String bookName, String userID) {
+        String sql = """
+                    SELECT * INSERT INTO transaction_history (transaction_id, user_id, book_id, transaction_date) VALUES
+                    (1, ?, ?, 10)
+                    """;
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, userID);
+            stmt.setString(2, bookName);
+            stmt.executeQuery();
+
+        } catch (SQLException e) {
+            System.err.println("❌ Error checking out book: " + e.getMessage());
+        }
+        return false;
     }
-
-
-
-    public void checkIn(int userId, int bookId) {
-        String sql = "UPDATE checkouts SET return_date = CURRENT_DATE WHERE user_id = ? AND book_id = ? AND return_date IS NULL";
-        // use JDBC to execute
-    }
-*/
-
 }

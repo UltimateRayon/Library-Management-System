@@ -2,16 +2,17 @@ package com.library.ui;
 
 import com.library.dao.BookDAO;
 import com.library.models.Book;
+import com.library.services.BookService;
 import com.library.utils.InputHandler;
 
 public class BookSearchUI {
- BookDAO daoBook = new BookDAO();
+  BookService bookService=new BookService();
   Book book;
 
   public void bookSearch(){
       System.out.println();
       String bookName = InputHandler.getString("Enter book title: ");
-      book = daoBook.findBook(bookName);
+      book = bookService.bookSearch(bookName);
       if(book != null){
           System.out.println("====BOOK FOUND====");
           System.out.println();
@@ -28,6 +29,5 @@ public class BookSearchUI {
           System.out.println();}
 
   }
-
 
 }

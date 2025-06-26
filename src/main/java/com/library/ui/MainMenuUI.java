@@ -1,12 +1,14 @@
 package com.library.ui;
 
 import com.library.models.User;
+import com.library.services.TransactionService;
 import com.library.services.UserService;
 import com.library.utils.InputHandler;
 
 public class MainMenuUI {
     UserService userService = new UserService();
     BookSearchUI bookFind = new BookSearchUI();
+    TransactionService transactionService=new TransactionService();
     User user;
 
     public MainMenuUI(User user) {
@@ -31,8 +33,10 @@ public class MainMenuUI {
             switch (inputx) {
                 case 1 -> userService.userOverview(user);
                 case 2 -> bookFind.bookSearch();
-//
-//                    case 3 -> checkOut();
+                case 3 -> {
+                    String bookName=InputHandler.getString("Enter book name: ");
+                    transactionService.checkOut(bookName, user.getId());
+                }
 //
 //                    case 4 -> Ck in;
 //
