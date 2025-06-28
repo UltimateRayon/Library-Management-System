@@ -3,9 +3,12 @@ package com.library.services;
 import com.library.dao.BookDAO;
 import com.library.dao.TransactionDAO;
 
+import java.util.List;
+
 public class TransactionService {
     BookDAO bookdao = new BookDAO();
     TransactionDAO trandao = new TransactionDAO();
+    TransactionDAO transactiondao=new TransactionDAO();
 
     public void checkOut(String bookName, String userID) {
         boolean isBookAvailable = bookdao.bookAvailability(bookName);
@@ -29,6 +32,10 @@ public class TransactionService {
         } else {
             return false;
         }
+    }
+    public List<String> checkOutHistory(String userId) {
+        return transactiondao.getCheckOutHistory(userId);
+
     }
 
 }
