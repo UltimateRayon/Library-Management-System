@@ -15,11 +15,10 @@ public class LoginUI {
         String password = InputHandler.getString("Enter your password: ");
 
         User user = userService.login(id, password);
-        if (user != null) {
+        if (user != null && userService.updateFine(user)) {
             System.out.println("✅ Welcome back, " + user.getName() + "!");
         } else {
             System.out.println("❌ Invalid ID or password.");
-            setValueForLogIn();
         }
             return user;
     }

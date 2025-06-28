@@ -29,7 +29,7 @@ public class MainMenuUI {
             System.out.println("5) Transaction");
             System.out.println("0) Log Out");
 
-            int input = InputHandler.getInt("Enter your choice: ");
+            int inputx = InputHandler.getInt("Enter your choice: ");
 
             switch (inputx) {
                 case 1 -> {
@@ -38,6 +38,8 @@ public class MainMenuUI {
                     System.out.println("Your name: " + user.getName());
                     System.out.println("Your ID: " + user.getId());
                     System.out.println("Your phone number: " + user.getPhone());
+                    System.out.println("Your borrowed books: " + user.getBorrowBook());
+                    System.out.println("Your fine: " + user.getFine()+ " days");
                     System.out.println();
                 }
 
@@ -45,7 +47,17 @@ public class MainMenuUI {
 
                 case 3 -> {
                     String bookName = InputHandler.getString("Enter book name to check out: ");
-                    transactionService.checkOut(bookName, user.getId());
+
+                    String checkoutResult=transactionService.checkOut(bookName, user);
+                    if(checkoutResult.equals("Success")){
+                        System.out.println("Book Checkout Successful");
+                    } else if(checkoutResult.equals("NA")){
+                        System.out.println("Book not available for checkout!");
+                    } else if(checkoutResult.equals("Overdue")){
+                        System.out.println("You have already Checked out 5 books or you have fine overdue.");
+                    } else {
+                        System.out.println("Check out error. Please try again.");
+                    }
                 }
 
                 case 4 -> {
@@ -59,7 +71,6 @@ public class MainMenuUI {
                     }
                 }
 
-
                  case 5 ->
                          {
                              List<String> checkOutHistory = transactionService.checkOutHistory(user.getId());
@@ -69,7 +80,6 @@ public class MainMenuUI {
                                      System.out.println(i);
                                  }
                              }
-
                          }
 
                 case 0 -> {

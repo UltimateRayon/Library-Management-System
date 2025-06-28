@@ -5,6 +5,10 @@ import com.library.models.User;
 import com.library.utils.AppContext;
 import com.library.utils.PasswordHelper;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+
 public class UserService {
 
     private final UserDAO userDAO = new UserDAO();
@@ -26,8 +30,25 @@ public class UserService {
             return "Duplicate";
         }
         String hashed = PasswordHelper.hashPassword(password);
-        User newUser = new User(id, name, phone, hashed);
+        Timestamp currentTime=Timestamp.from(Instant.now());
+        User newUser = new User(id, name, phone, hashed, 0, 0, currentTime);
         return (userDAO.saveUser(newUser))? "Success" : "Error";
+    }
+
+    public boolean updateFine(User user){
+        int fine=user.getFine();
+        if(fine>0){
+            Timestamp lastTime=user.getTime();
+            Timestamp currentTime=Timestamp.from(Instant.now());
+            long timeDifference= ChronoUnit.DAYS.between(lastTime.toLocalDateTime(), currentTime.toLocalDateTime());
+            //System.out.println(timeDifference);
+            if(timeDifference>0){
+                userDAO.updateFine(timeDifference, user.getId());
+                    user.setFine(fine-(int)timeDifference);
+                return true;
+            }
+        }
+        return true;
     }
 }
 

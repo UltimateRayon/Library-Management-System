@@ -2,15 +2,14 @@ package com.library.utils;
 
 public class InputValidator {
     public boolean isValidPassword(String password) {
-        boolean isValid = true;
 
-        isValid= hasMinimumLength(password);
-        isValid= hasSpecialCharacter(password);
-        isValid= hasUppercaseLetter(password);
-        isValid= hasLowercaseLetter(password);
-        isValid= hasDigit(password);
+        boolean isValid1= hasMinimumLength(password);
+        boolean isValid2= hasSpecialCharacter(password);
+        boolean isValid3= hasUppercaseLetter(password);
+        boolean isValid4= hasLowercaseLetter(password);
+        boolean isValid5= hasDigit(password);
 
-        return isValid;
+        return (isValid1&&isValid2&&isValid3&&isValid4&&isValid5);
     }
 
     private boolean hasMinimumLength(String password) {

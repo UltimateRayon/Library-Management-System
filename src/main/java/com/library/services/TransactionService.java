@@ -2,23 +2,34 @@ package com.library.services;
 
 import com.library.dao.BookDAO;
 import com.library.dao.TransactionDAO;
+import com.library.dao.UserDAO;
+import com.library.models.User;
 
 import java.util.List;
 
 public class TransactionService {
+    User user;
+    UserDAO userdao=new UserDAO();
     BookDAO bookdao = new BookDAO();
     TransactionDAO trandao = new TransactionDAO();
     TransactionDAO transactiondao=new TransactionDAO();
 
-    public void checkOut(String bookName, String userID) {
+    public String checkOut(String bookName, User user) {
         boolean isBookAvailable = bookdao.bookAvailability(bookName);
         if (isBookAvailable) {
-            if (trandao.bookCheckOut(bookName, userID) && bookdao.bookReduce(bookName)) {
-                System.out.println("Book Checkout Successful");
+            if(user.getBorrowBook()<5 && user.getFine()==0) {
+                if (trandao.bookCheckOut(bookName, user.getId()) && bookdao.bookReduce(bookName) && userdao.borrowBookUpdate(user.getId(), 1)) {
+                    user.setBorrowBook(user.getBorrowBook()+1);
+                    return "Success";
+                }
+                else {
+                    return "Error";
+                }
+            } else {
+                return "Overdue";
             }
-        } else {
-            System.out.println("Book not available for checkout!");
         }
+        return "NA";
     }
 
     public boolean checkIn(String bookName, String userID) {
