@@ -1,5 +1,6 @@
 package com.library.ui;
 
+import java.util.List;
 import com.library.models.User;
 import com.library.services.TransactionService;
 import com.library.services.UserService;
@@ -59,7 +60,17 @@ public class MainMenuUI {
                 }
 
 
-                // case 5 -> getTransaction();
+                 case 5 ->
+                         {
+                             List<String> checkOutHistory = transactionService.checkOutHistory(user.getId());
+                             if (checkOutHistory!=null){
+                                 for (String i:checkOutHistory)
+                                 {
+                                     System.out.println(i);
+                                 }
+                             }
+
+                         }
 
                 case 0 -> {
                     exit = true;
