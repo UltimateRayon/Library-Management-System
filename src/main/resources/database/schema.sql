@@ -27,7 +27,7 @@ CREATE TABLE transaction_history (
 
     transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP PRIMARY KEY,
     user_id VARCHAR(50) NOT NULL REFERENCES users(id),
-    book_name VARCHAR(50) NOT NULL REFERENCES book_collection(title),
+    book_name VARCHAR(50) NOT NULL REFERENCES book_collection(title)
 );
 
 
