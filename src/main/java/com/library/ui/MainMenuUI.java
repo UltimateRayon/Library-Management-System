@@ -31,7 +31,14 @@ public class MainMenuUI {
             int inputx = InputHandler.getInt("Enter your choice: ");
 
             switch (inputx) {
-                case 1 -> userService.userOverview(user);
+                case 1 -> {
+                    System.out.println();
+                    System.out.println("====User Account Overview====");
+                    System.out.println("Your name: " + user.getName());
+                    System.out.println("Your ID: " + user.getId());
+                    System.out.println("Your phone number: " + user.getPhone());
+                    System.out.println();
+                }
                 case 2 -> bookFind.bookSearch();
                 case 3 -> {
                     String bookName=InputHandler.getString("Enter book name: ");

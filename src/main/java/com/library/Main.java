@@ -4,10 +4,12 @@ import com.library.models.User;
 import com.library.ui.LoginUI;
 import com.library.ui.MainMenuUI;
 import com.library.ui.RegisterUI;
+import com.library.utils.AppContext;
 import com.library.utils.InputHandler;
 
 public class Main {
     public static void main(String[] args) {
+        AppContext.isGUI=false;
         RegisterUI registerUI = new RegisterUI();
         LoginUI loginUI = new LoginUI();
 

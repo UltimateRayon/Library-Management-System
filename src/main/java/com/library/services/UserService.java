@@ -2,9 +2,11 @@ package com.library.services;
 
 import com.library.dao.UserDAO;
 import com.library.models.User;
+import com.library.utils.AppContext;
 import com.library.utils.PasswordHelper;
 
 public class UserService {
+
     private final UserDAO userDAO = new UserDAO();
     private User user;
 
@@ -18,24 +20,14 @@ public class UserService {
     }
 
     //Registers a new user; returns true on success
-    public boolean register(String id, String name, String phone, String password) {
+    public String register(String id, String name, String phone, String password) {
+        AppContext.isGUI=true;
         if (userDAO.getUserById(id) != null) {
-            System.out.println("❌ ID already exists.");
-            return false;
+            return "Duplicate";
         }
         String hashed = PasswordHelper.hashPassword(password);
         User newUser = new User(id, name, phone, hashed);
-        return userDAO.saveUser(newUser);
+        return (userDAO.saveUser(newUser))? "Success" : "Error";
     }
-
-    public void userOverview(User user) {
-        System.out.println();
-        System.out.println("====User Account Overview====");
-        System.out.println("Your name: " + user.getName());
-        System.out.println("Your ID: " + user.getId());
-        System.out.println("Your phone number: " + user.getPhone());
-        System.out.println();
-    }
-
 }
 
