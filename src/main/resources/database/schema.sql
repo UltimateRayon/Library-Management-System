@@ -9,7 +9,11 @@ CREATE TABLE users (
     id VARCHAR(50) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     phone VARCHAR(15) NOT NULL,
-    password VARCHAR(64) NOT NULL
+    password VARCHAR(64) NOT NULL,
+    fine INTEGER DEFAULT 0,
+    borrowed_books INTEGER DEFAULT 0,
+    last_login_time TIMESTAMP
+
 );
 
 --  book_collection table (id changed to string form)
