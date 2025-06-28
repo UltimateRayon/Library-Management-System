@@ -4,9 +4,11 @@ import com.library.services.UserService;
 import com.library.utils.InputHandler;
 import com.library.utils.InputValidator;
 
+import java.lang.classfile.Label;
+
 
 public class RegisterUI {
-    private final UserService userService = new UserService();
+    private UserService userService = new UserService();
     public InputValidator passCheck=new InputValidator();
 
     public void setAllValuesForRegister() {
@@ -20,7 +22,7 @@ public class RegisterUI {
         String repassword;
         System.out.println("""
                 Enter your password following these instructions:
-                1. Should be at least 5 characters long.
+                1. Should be at least 6 characters long.
                 2. Must contain a special character.
                 3. Must include both uppercase and lowercase letters.
                 4. Must include at least one number.
@@ -34,10 +36,11 @@ public class RegisterUI {
             }
             isPasswordValid= passCheck.isValidPassword(password);
         } while (!password.equals(repassword) || !isPasswordValid);
-
-        boolean success = userService.register(id, name, phone, password);
-        if (success) {
+        String success = userService.register(id, name, phone, password);
+        if (success.equals("Success")) {
             System.out.println("Registration successful! You may now log in.");
+        } else if(success.equals("Duplicate")){
+            System.out.println("User already exists.");
         } else {
             System.out.println("Registration failed. Please try again.");
         }

@@ -14,8 +14,8 @@ public class InputValidator {
     }
 
     private boolean hasMinimumLength(String password) {
-        if (password.length() < 5) {
-            System.out.println("Password must be at least 5 characters long.");
+        if (password.length() < 6) {
+            System.out.println("Password must be at least 6 characters long.");
             return false;
         }
         return true;
