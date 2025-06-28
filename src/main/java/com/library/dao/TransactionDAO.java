@@ -26,9 +26,63 @@ public class TransactionDAO {
                 return true;
             }
         } catch (SQLException e) {
-            System.err.println("❌ Error checking out book: " + e.getMessage());
+            System.err.println("❌ Error checking OUT book: " + e.getMessage());
             e.printStackTrace();
         }
         return false;
     }
+
+    public boolean bookCheckIn(String bookName,String userID){
+        String sql = """
+            DELETE FROM transaction_history
+            WHERE ctid IN (
+            SELECT ctid FROM transaction_history
+            WHERE user_id = ? AND book_name = ?
+            ORDER BY transaction_date ASC
+            LIMIT 1
+            )
+        """;
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1,userID);
+            stmt.setString(2,bookName);
+            int rowsAffected = stmt.executeUpdate();
+            if(rowsAffected>0){
+                return true;
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("❌ Error check IN: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean hasUserBorrowedBook(String bookName,String userID){
+        String sql= """
+                    SELECT * FROM transaction_history WHERE user_id = ? AND book_name =?
+                    """;
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+            stmt.setString(1,userID);
+            stmt.setString(2,bookName);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next())
+            {
+                return true;
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("❌ Error UserBorrowedBook: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return  false;
+    }
+
+
+
+
 }

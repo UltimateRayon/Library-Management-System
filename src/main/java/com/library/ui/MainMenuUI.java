@@ -8,7 +8,7 @@ import com.library.utils.InputHandler;
 public class MainMenuUI {
     UserService userService = new UserService();
     BookSearchUI bookFind = new BookSearchUI();
-    TransactionService transactionService=new TransactionService();
+    TransactionService transactionService = new TransactionService();
     User user;
 
     public MainMenuUI(User user) {
@@ -19,7 +19,7 @@ public class MainMenuUI {
     public void menu() {
         boolean exit = false;
         while (!exit) {
-            System.out.println("====WELCOME TO THE LIBRARY MANAGEMENT SYSTEM====");
+            System.out.println("==== WELCOME TO THE LIBRARY MANAGEMENT SYSTEM ====");
             System.out.println();
             System.out.println("1) User Overview");
             System.out.println("2) Search");
@@ -28,7 +28,7 @@ public class MainMenuUI {
             System.out.println("5) Transaction");
             System.out.println("0) Log Out");
 
-            int inputx = InputHandler.getInt("Enter your choice: ");
+            int input = InputHandler.getInt("Enter your choice: ");
 
             switch (inputx) {
                 case 1 -> {
@@ -39,19 +39,37 @@ public class MainMenuUI {
                     System.out.println("Your phone number: " + user.getPhone());
                     System.out.println();
                 }
+
                 case 2 -> bookFind.bookSearch();
+
                 case 3 -> {
-                    String bookName=InputHandler.getString("Enter book name: ");
+                    String bookName = InputHandler.getString("Enter book name to check out: ");
                     transactionService.checkOut(bookName, user.getId());
                 }
-//
-//                    case 4 -> Ck in;
-//
-//                    case 5 -> getTransaction();
-                case 0 -> exit = true;
-                default -> System.out.println("Invalid choice! Please Try Again.");
+
+                case 4 -> {
+                    String bookName = InputHandler.getString("Enter book name to check in: ");
+                    boolean result = transactionService.checkIn(bookName, user.getId());
+
+                    if (result) {
+                        System.out.println("Book Check-In Successful");
+                    } else {
+                        System.out.println("Check-In Failed. Either the book was not borrowed or an error occurred.");
+                    }
+                }
+
+
+                // case 5 -> getTransaction();
+
+                case 0 -> {
+                    exit = true;
+                    System.out.println("Logging out... Goodbye!");
+                }
+
+                default -> System.out.println("Invalid choice! Please try again.");
             }
+
+
         }
     }
 }
-

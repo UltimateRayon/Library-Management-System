@@ -73,4 +73,26 @@ public class BookDAO {
         }
         return false;
     }
+    public boolean bookIncrease(String bookName){
+        String sql = """
+            UPDATE book_collection
+            SET 
+                total_copies = total_copies + 1,
+                availability = true
+            WHERE title = ?;
+            """;
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, bookName);
+            int rowsAffected = stmt.executeUpdate();
+            if(rowsAffected > 0){
+                return true;
+            }
+
+        } catch (SQLException e) {
+            System.err.println("❌ Error increasing book count: " + e.getMessage());
+        }
+        return false;
+    }
 }
