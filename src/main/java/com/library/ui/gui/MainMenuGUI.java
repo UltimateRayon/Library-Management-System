@@ -32,7 +32,7 @@ public class MainMenuGUI {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Book Checkout");
             dialog.setHeaderText("Enter the name of the book to check out:");
-            dialog.showAndWait().ifPresent(bookName -> transactionService.checkOut(bookName, user.getId()));
+            dialog.showAndWait().ifPresent(bookName -> transactionService.checkOut(bookName, user));
         });
 
         Button logoutButton = new Button("Log Out");
