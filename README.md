@@ -1,3 +1,13 @@
+## 📈 Project Completion Status
+
+**Console Version:**  
+![Console Progress](https://progress-bar.dev/85/?title=console&width=300)
+
+**GUI (JavaFX) Version:**  
+![GUI Progress](https://progress-bar.dev/40/?title=gui&width=300)
+
+---
+
 # 📚 Library Management System
 
 A simple Java-based Library Management System that allows users to register, log in, view available books, check out and return books, and view account information. The system is built using Java, PostgreSQL, and follows a modular structure using DAO, service layers, and model classes. Initially console-based, with potential for future GUI enhancement.
