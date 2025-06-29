@@ -14,7 +14,9 @@ public class Main {
         LoginUI loginUI = new LoginUI();
 
         while (true) {
-            System.out.println("\n====== Welcome to Library Management System ======");
+            System.out.println();
+            System.out.println("\n==== WELCOME TO THE LIBRARY MANAGEMENT SYSTEM ====");
+            System.out.println();
             System.out.println("1. Register");
             System.out.println("2. Log In");
             System.out.println("0. Exit");
@@ -29,15 +31,17 @@ public class Main {
                     }
                     else
                     {
-                        System.out.println("Error Login! Try again");
+                        System.out.println();
+                        System.out.println("❌ Error Login! Try Again! ❌");
                     }
                 }
                 case "0" -> {
-                    System.out.println("Goodbye!");
+                    System.out.println();
+                    System.out.println("==== SEE YOU SOON ====");
                     InputHandler.closeScanner();
                     return;
                 }
-                default -> System.out.println("❌ Invalid choice.");
+                default -> System.out.println("\n❌ Invalid Choice. ❌");
             }
         }
     }
