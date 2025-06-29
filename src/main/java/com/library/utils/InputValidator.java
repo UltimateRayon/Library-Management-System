@@ -15,7 +15,7 @@ public class InputValidator {
 
     private boolean hasMinimumLength(String password) {
         if (password.length() < 6) {
-            System.out.println("Password must be at least 6 characters long.");
+            System.out.println("❌ Password Must Be At Least 6 Characters Long. ❌");
             return false;
         }
         return true;
@@ -23,7 +23,7 @@ public class InputValidator {
 
     private boolean hasSpecialCharacter(String password) {
         if (!password.matches(".*[!@#$%^&()_+=\\-{}\\[\\]:;\"'<>,.?/~|\\\\].*")) {
-            System.out.println("Password must contain at least one special character.");
+            System.out.println("❌ Password Must Contain At Least One Special Character. ❌");
             return false;
         }
         return true;
@@ -31,7 +31,7 @@ public class InputValidator {
 
     private boolean hasUppercaseLetter(String password) {
         if (!password.matches(".*[A-Z].*")) {
-            System.out.println("Password must contain at least one uppercase letter.");
+            System.out.println("❌ Password Must Contain At Least One Uppercase Letter. ❌");
             return false;
         }
         return true;
@@ -39,7 +39,7 @@ public class InputValidator {
 
     private boolean hasLowercaseLetter(String password) {
         if (!password.matches(".*[a-z].*")) {
-            System.out.println("Password must contain at least one lowercase letter.");
+            System.out.println("❌ Password Must Contain At Least One Lowercase Letter. ❌");
             return false;
         }
         return true;
@@ -47,7 +47,7 @@ public class InputValidator {
 
     private boolean hasDigit(String password) {
         if (!password.matches(".*\\d.*")) {
-            System.out.println("Password must contain at least one digit.");
+            System.out.println("❌ Password Must Contain At Least One digit. ❌");
             return false;
         }
         return true;

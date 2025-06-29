@@ -10,22 +10,25 @@ public class BookSearchUI {
   Book book;
 
   public void bookSearch(){
+      System.out.println("\uD83D\uDD0D Search Books \uD83D\uDD0D");
+      System.out.println("Input 0 To Cancel");
       System.out.println();
       String bookName = InputHandler.getString("Enter book title: ");
+      if(bookName == null){return;}
       book = bookService.bookSearch(bookName);
       if(book != null){
-          System.out.println("====BOOK FOUND====");
+          System.out.println("✅ Book Found. ✅");
           System.out.println();
-          System.out.println("Book title: " + book.getTitle());
-          System.out.println("Book author: " + book.getAuthor());
+          System.out.println("Book Title: " + book.getTitle());
+          System.out.println("Book Author: " + book.getAuthor());
           System.out.println("Book ID: " + book.getId());
-          System.out.println("Book genre: " + book.getGenre());
+          System.out.println("Book Genre: " + book.getGenre());
           System.out.println("Availability: " + (book.isAvailable() ? "Available" : "Not available"));
           System.out.println();
       }
       else
       {
-          System.out.println("❌ Book not found ❌");
+          System.out.println("❌ Book Not Found! ❌");
           System.out.println();}
 
   }

@@ -27,7 +27,7 @@ public class TransactionDAO {
                 return true;
             }
         } catch (SQLException e) {
-            System.err.println("❌ Error checking OUT book: " + e.getMessage());
+            System.err.println("❌ Error Checking OUT Book: " + e.getMessage());
             e.printStackTrace();
         }
         return false;
@@ -52,7 +52,7 @@ public class TransactionDAO {
                 return true;
             }
         } catch (SQLException e) {
-            System.err.println("❌ Error check IN: " + e.getMessage());
+            System.err.println("❌ Error Check In: " + e.getMessage());
             e.printStackTrace();
         }
         return false;

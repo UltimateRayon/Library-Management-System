@@ -12,12 +12,13 @@ public class TransactionService {
 
     public void checkOut(String bookName, String userID) {
         boolean isBookAvailable = bookdao.bookAvailability(bookName);
+        System.out.println();
         if (isBookAvailable) {
             if (trandao.bookCheckOut(bookName, userID) && bookdao.bookReduce(bookName)) {
-                System.out.println("Book Checkout Successful");
+                System.out.println("✅ Book Checkout Successful ✅");
             }
         } else {
-            System.out.println("Book not available for checkout!");
+            System.out.println("❌ Book Not Available For Checkout! ❌");
         }
     }
 

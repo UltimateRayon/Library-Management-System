@@ -12,8 +12,9 @@ import java.util.Scanner;
             do {
                 System.out.print(prompt);
                 input = scanner.nextLine().trim();
+                if(input.equals("0")) return "0";
                 if (input.isEmpty()) {
-                    System.out.println("Input cannot be empty. Please try again.");
+                    System.out.println("❌ Input Cannot Be Empty. Please Try Again! ❌");
                 }
             } while (input.isEmpty());
             return input;
@@ -27,7 +28,7 @@ import java.util.Scanner;
                 try {
                     return Integer.parseInt(input);
                 } catch (NumberFormatException e) {
-                    System.out.println("Please enter a valid integer.");
+                    System.out.println("❌ Please enter a valid integer! ❌");
                 }
             }
         }
@@ -40,7 +41,7 @@ import java.util.Scanner;
                 try {
                     return Double.parseDouble(input);
                 } catch (NumberFormatException e) {
-                    System.out.println("Please enter a valid number.");
+                    System.out.println("❌ Please Enter A Valid Number! ❌");
                 }
             }
         }

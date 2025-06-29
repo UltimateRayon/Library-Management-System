@@ -14,12 +14,15 @@ public class Main {
         LoginUI loginUI = new LoginUI();
 
         while (true) {
-            System.out.println("\n====== Welcome to Library Management System ======");
-            System.out.println("1. Register");
-            System.out.println("2. Log In");
-            System.out.println("0. Exit");
+            System.out.println();
+            System.out.println("\n==== Welcome to Library Management System ====");
+            System.out.println();
+            System.out.println("1) Register");
+            System.out.println("2) Log In");
+            System.out.println("0) Exit");
 
             String choice = InputHandler.getString("Enter your choice: ");
+            System.out.println();
             switch (choice) {
                 case "1" -> registerUI.setAllValuesForRegister();
                 case "2" -> {
@@ -29,15 +32,16 @@ public class Main {
                     }
                     else
                     {
-                        System.out.println("Error Login! Try again");
+                        System.out.println();
+                        System.out.println("❌ Login Not Successful. ❌");
                     }
                 }
                 case "0" -> {
-                    System.out.println("Goodbye!");
+                    System.out.println("==== SEE YOU SOON ====");
                     InputHandler.closeScanner();
                     return;
                 }
-                default -> System.out.println("❌ Invalid choice.");
+                default -> System.out.println("❌ Invalid choice. ❌");
             }
         }
     }
