@@ -77,7 +77,6 @@ public class TransactionDAO {
     }
 
     public List<String> getCheckOutHistory(String userId) {
-
         List<String> history = new ArrayList<>();
         String sql = """
                 SELECT b.title, th.transaction_date
@@ -101,7 +100,6 @@ public class TransactionDAO {
             e.printStackTrace();
         }
         return null;
-
     }
 }
 

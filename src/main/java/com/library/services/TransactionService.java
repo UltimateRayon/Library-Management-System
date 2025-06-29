@@ -16,41 +16,48 @@ public class TransactionService {
 
     public String checkOut(String bookName, User user) {
         boolean isBookAvailable = bookdao.bookAvailability(bookName);
-        if (isBookAvailable) {
-            if(user.getBorrowBook()<5 && user.getFine()==0) {
-                if (trandao.bookCheckOut(bookName, user.getId()) && bookdao.bookReduce(bookName) && userdao.borrowBookUpdate(user.getId(), 1)) {
-                    user.setBorrowBook(user.getBorrowBook()+1);
-                    return "Success";
-                }
-                else {
-                    return "Error";
-                }
-            } else {
-                return "Overdue";
-            }
+        List<String> bookList = bookdao.userBookList(user.getId());
+        boolean isUnique=true;
+        for(String book: bookList){
+            if(book.equals(bookName)){isUnique=false; break;}
         }
-        return "NA";
+        if(isUnique) {
+            if (isBookAvailable) {
+                if (user.getBorrowBook() < 5 && user.getFine() == 0) {
+                    if (trandao.bookCheckOut(bookName, user.getId()) && bookdao.bookReduce(bookName) && userdao.borrowBookUpdate(user.getId(), 1)) {
+                        user.setBorrowBook(user.getBorrowBook() + 1);
+                        return "Success";
+                    } else {
+                        return "Error";
+                    }
+                } else {
+                    return "Overdue";
+                }
+            }
+            return "NA";
+        }
+        return "Not Unique";
     }
 
-    public String checkIn(String bookName, String userID) {
+    public String checkIn(String bookName, User user) {
         TransactionDAO trandao = new TransactionDAO();
         BookDAO bookdao = new BookDAO();
         UserDAO userdao = new UserDAO();
 
-        boolean hasBorrowed = trandao.hasUserBorrowedBook(bookName, userID);
+        boolean hasBorrowed = trandao.hasUserBorrowedBook(bookName, user.getId());
         if (!hasBorrowed) {
             return "no book";
         }
 
-        if (trandao.bookCheckIn(bookName, userID) && bookdao.bookIncrease(bookName) && userdao.borrowBookUpdate(userID, -1)) {
+        if (trandao.bookCheckIn(bookName, user.getId()) && bookdao.bookIncrease(bookName) && userdao.borrowBookUpdate(user.getId(), -1)) {
             return "Successful";
         } else {
             return "error";
         }
     }
 
-    public List<String> checkOutHistory(String userId) {
-        return transactiondao.getCheckOutHistory(userId);
+    public List<String> checkOutHistory(User user) {
+        return transactiondao.getCheckOutHistory(user.getId());
 
     }
 

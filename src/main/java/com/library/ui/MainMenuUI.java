@@ -55,14 +55,16 @@ public class MainMenuUI {
                         System.out.println("Book not available for checkout!");
                     } else if(checkoutResult.equals("Overdue")){
                         System.out.println("You have already Checked out 5 books or you have fine overdue.");
-                    } else {
+                    } else if(checkoutResult.equals("Not Unique")){
+                        System.out.println("You already have a copy of this book.");
+                    }else {
                         System.out.println("Check out error. Please try again.");
                     }
                 }
 
                 case 4 -> {
                     String bookName = InputHandler.getString("Enter book name to check in: ");
-                    String result = transactionService.checkIn(bookName, user.getId());
+                    String result = transactionService.checkIn(bookName, user);
 
                     if (result.equals("Successful")) {
                         System.out.println("✅ Book Check-In Successful");
@@ -74,16 +76,14 @@ public class MainMenuUI {
                 }
 
 
-                 case 5 ->
-                         {
-                             List<String> checkOutHistory = transactionService.checkOutHistory(user.getId());
-                             if (checkOutHistory!=null){
-                                 for (String i:checkOutHistory)
-                                 {
+                 case 5 -> {
+                    List<String> checkOutHistory = transactionService.checkOutHistory(user);
+                    if (checkOutHistory!=null){
+                        for (String i:checkOutHistory) {
                                      System.out.println(i);
-                                 }
-                             }
-                         }
+                        }
+                    }
+                }
 
                 case 0 -> {
                     exit = true;
