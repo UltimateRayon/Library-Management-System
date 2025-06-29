@@ -1,10 +1,10 @@
-## 📈 Project Completion Status
+## 📈 Project Completion
 
-**Console Version:**  
-![Console Progress](https://progress-bar.dev/85/?title=console&width=300)
+🖥️ Console Version: **85%**  
+🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜
 
-**GUI (JavaFX) Version:**  
-![GUI Progress](https://progress-bar.dev/40/?title=gui&width=300)
+🎨 GUI Version: **40%**  
+🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜
 
 ---
 
