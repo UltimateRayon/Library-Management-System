@@ -62,14 +62,17 @@ public class MainMenuUI {
 
                 case 4 -> {
                     String bookName = InputHandler.getString("Enter book name to check in: ");
-                    boolean result = transactionService.checkIn(bookName, user.getId());
+                    String result = transactionService.checkIn(bookName, user.getId());
 
-                    if (result) {
-                        System.out.println("Book Check-In Successful");
+                    if (result.equals("Successful")) {
+                        System.out.println("✅ Book Check-In Successful");
+                    } else if (result.equals("no book")) {
+                        System.out.println("❌ Check-In Failed: The book was not borrowed.");
                     } else {
-                        System.out.println("Check-In Failed. Either the book was not borrowed or an error occurred.");
+                        System.out.println("⚠️ Check-In Error!");
                     }
                 }
+
 
                  case 5 ->
                          {
