@@ -32,21 +32,27 @@ public class TransactionService {
         return "NA";
     }
 
-    public boolean checkIn(String bookName, String userID) {
+    public String checkIn(String bookName, String userID) {
+        TransactionDAO trandao = new TransactionDAO();
+        BookDAO bookdao = new BookDAO();
+        UserDAO userdao = new UserDAO();
+
         boolean hasBorrowed = trandao.hasUserBorrowedBook(bookName, userID);
+        if (!hasBorrowed) {
+            return "no book";
+        }
 
-        if (hasBorrowed) {
-            boolean transactionSuccess = trandao.bookCheckIn(bookName, userID);
-            boolean inventoryUpdated = bookdao.bookIncrease(bookName);
-
-            return transactionSuccess && inventoryUpdated;
+        if (trandao.bookCheckIn(bookName, userID) && bookdao.bookIncrease(bookName) && userdao.borrowBookUpdate(userID, -1)) {
+            return "Successful";
         } else {
-            return false;
+            return "error";
         }
     }
+
     public List<String> checkOutHistory(String userId) {
         return transactiondao.getCheckOutHistory(userId);
 
     }
+
 
 }
