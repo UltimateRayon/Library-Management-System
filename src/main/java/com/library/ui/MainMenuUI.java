@@ -62,10 +62,13 @@ public class MainMenuUI {
                         System.out.println("❌ Book Not Found Or Not Available For Checkout! ❌");
                     } else if(checkoutResult.equals("Overdue")){
                         System.out.println();
-                        System.out.println("❌ You Have Already Checked Out 5 Books Or You Have Fine overdue. ❌");
-                    } else {
+                        System.out.println("❌ You have already Checked out 5 books or you have fine overdue.");
+                    } else if(checkoutResult.equals("Not Unique")){
                         System.out.println();
-                        System.out.println("❌ Check Out Error. Please Try Again! ❌");
+                        System.out.println("❌ You already have a copy of this book.");
+                    }else {
+                        System.out.println();
+                        System.out.println("❌ Check out error. Please try again! ❌");
                     }
                 }
 
@@ -74,28 +77,28 @@ public class MainMenuUI {
                     System.out.println("⬇\uFE0F Book Check In ⬇\uFE0F");
                     System.out.println();
                     String bookName = InputHandler.getString("Enter book name to check in: ");
-                    if(bookName.equals("0")){menu();}
-                    boolean result = transactionService.checkIn(bookName, user.getId());
 
-                    if (result) {
-                        System.out.println();
-                        System.out.println("✅ Book Check-In Successful ✅");
+                    if(bookName.equals("0")){menu();}
+                    String result = transactionService.checkIn(bookName, user);
+
+                    if (result.equals("Successful")) {
+                        System.out.println("✅ Book Check-In Successful");
+                    } else if (result.equals("no book")) {
+                        System.out.println("❌ Check-In Failed: The book was not borrowed.");
                     } else {
-                        System.out.println();
-                        System.out.println("❌ Check-In Failed. Either The Book Was Not Borrowed Or An Error Occurred. ❌");
+                        System.out.println("⚠️ Check-In Error!");
                     }
                 }
 
-                 case 5 ->
-                         {
-                             List<String> checkOutHistory = transactionService.checkOutHistory(user.getId());
-                             if (checkOutHistory!=null){
-                                 for (String i:checkOutHistory)
-                                 {
+
+                 case 5 -> {
+                    List<String> checkOutHistory = transactionService.checkOutHistory(user);
+                    if (checkOutHistory!=null){
+                        for (String i:checkOutHistory) {
                                      System.out.println(i);
-                                 }
-                             }
-                         }
+                        }
+                    }
+                }
 
                 case 0 -> {
                     exit = true;

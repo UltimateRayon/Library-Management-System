@@ -49,7 +49,7 @@ public class UserDAO {
         }
     }
 
-    public boolean updateFine(long time, String userId){
+    public void updateFine(long time, String userId){
         String sql = """
                 UPDATE users
                 SET fine=fine - ?,
@@ -64,11 +64,9 @@ public class UserDAO {
             stmt.setTimestamp(2, currentTime);
             stmt.setString(3, userId);
             stmt.executeUpdate();
-            return true;
         } catch (SQLException e) {
             System.err.println("❌ Error updating fine and time: " + e.getMessage());
         }
-        return false;
     }
 
     public boolean borrowBookUpdate(String userId, int amount){
