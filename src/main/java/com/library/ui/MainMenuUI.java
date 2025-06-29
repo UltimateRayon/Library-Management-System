@@ -20,7 +20,8 @@ public class MainMenuUI {
     public void menu() {
         boolean exit = false;
         while (!exit) {
-            System.out.println("==== WELCOME TO THE LIBRARY MANAGEMENT SYSTEM ====");
+            System.out.println();
+            System.out.println("==== MAIN MENU ====");
             System.out.println();
             System.out.println("1) User Overview");
             System.out.println("2) Search");
@@ -34,36 +35,50 @@ public class MainMenuUI {
             switch (inputx) {
                 case 1 -> {
                     System.out.println();
-                    System.out.println("====User Account Overview====");
-                    System.out.println("Your name: " + user.getName());
+                    System.out.println("\uD83D\uDDF9 User Account Overview \uD83D\uDDF9");
+                    System.out.println("Your Name: " + user.getName());
                     System.out.println("Your ID: " + user.getId());
-                    System.out.println("Your phone number: " + user.getPhone());
-                    System.out.println("Your borrowed books: " + user.getBorrowBook());
-                    System.out.println("Your fine: " + user.getFine()+ " days");
+                    System.out.println("Your Phone Number: " + user.getPhone());
+                    System.out.println("Your Borrowed Books: " + user.getBorrowBook());
+                    System.out.println("Your Fine: " + user.getFine()+ " days");
                     System.out.println();
                 }
 
                 case 2 -> bookFind.bookSearch();
 
                 case 3 -> {
+                    System.out.println();
+                    System.out.println("⬆\uFE0F Book Check Out ⬆\uFE0F");
+                    System.out.println();
                     String bookName = InputHandler.getString("Enter book name to check out: ");
+                    if(bookName.equals("0")){menu();}
 
                     String checkoutResult=transactionService.checkOut(bookName, user);
                     if(checkoutResult.equals("Success")){
-                        System.out.println("Book Checkout Successful");
+                        System.out.println();
+                        System.out.println("✅ Book Checkout Successful ✅");
                     } else if(checkoutResult.equals("NA")){
-                        System.out.println("Book not available for checkout!");
+                        System.out.println();
+                        System.out.println("❌ Book Not Found Or Not Available For Checkout! ❌");
                     } else if(checkoutResult.equals("Overdue")){
-                        System.out.println("You have already Checked out 5 books or you have fine overdue.");
+                        System.out.println();
+                        System.out.println("❌ You have already Checked out 5 books or you have fine overdue.");
                     } else if(checkoutResult.equals("Not Unique")){
-                        System.out.println("You already have a copy of this book.");
+                        System.out.println();
+                        System.out.println("❌ You already have a copy of this book.");
                     }else {
-                        System.out.println("Check out error. Please try again.");
+                        System.out.println();
+                        System.out.println("❌ Check out error. Please try again! ❌");
                     }
                 }
 
                 case 4 -> {
+                    System.out.println();
+                    System.out.println("⬇\uFE0F Book Check In ⬇\uFE0F");
+                    System.out.println();
                     String bookName = InputHandler.getString("Enter book name to check in: ");
+
+                    if(bookName.equals("0")){menu();}
                     String result = transactionService.checkIn(bookName, user);
 
                     if (result.equals("Successful")) {
@@ -87,10 +102,15 @@ public class MainMenuUI {
 
                 case 0 -> {
                     exit = true;
-                    System.out.println("Logging out... Goodbye!");
+                    System.out.println();
+                    System.out.println("Logging out... ➡\uFE0F");
                 }
 
-                default -> System.out.println("Invalid choice! Please try again.");
+                default -> {
+                    System.out.println();
+                    System.out.println("❌ Invalid Choice! Please Try Again! ❌");
+                }
+
             }
 
 
