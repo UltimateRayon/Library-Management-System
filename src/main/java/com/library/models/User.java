@@ -3,8 +3,8 @@ package com.library.models;
 import java.sql.Timestamp;
 
 public class User {
-    private String id;         // Used as the unique login ID
-    private String name;       // User's full name
+    private String id;
+    private String name;
     private String password;   // Hashed password (never store plain text!)
     private String phone;
     private int fine;
@@ -70,24 +70,19 @@ public class User {
         return fine;
     }
 
-    public void setFine(int fine) {
-        this.fine = fine;
-    }
-
     public int getBorrowBook() {
         return borrowBook;
-    }
-
-    public void setBorrowBook(int borrowBook) {
-        this.borrowBook = borrowBook;
     }
 
     public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
-        this.time = time;
+
+    public void setUserValues(int fine, int borrowedBooks, Timestamp time){
+        this.fine=fine;
+        this.borrowBook=borrowedBooks;
+        this.time=time;
     }
 }
 

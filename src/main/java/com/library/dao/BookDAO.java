@@ -1,7 +1,6 @@
 package com.library.dao;
 
 import com.library.models.Book;
-import com.library.models.User;
 import com.library.utils.DatabaseConnection;
 
 import java.sql.*;
@@ -76,7 +75,7 @@ public class BookDAO {
     public boolean bookIncrease(String bookName){
         String sql = """
             UPDATE book_collection
-            SET 
+            SET
                 total_copies = total_copies + 1,
                 availability = true
             WHERE title = ?;
@@ -115,6 +114,28 @@ public class BookDAO {
             return bookList;
         } catch (SQLException e) {
             System.err.println("❌ Error in getCheckOutHistory: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<String> getBookList() {
+        List<String> bookList = new ArrayList<>();
+        String sql = """
+                SELECT title, availability FROM book_collection
+                ORDER BY title;
+                """;
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String book=rs.getString("title");
+                boolean status=rs.getBoolean("availability");
+                bookList.add("\n-Book Title: "+book+"\n-Availability: "+((status)?"Available":"Not Available"));
+            }
+            return bookList;
+        } catch (SQLException e) {
+            System.err.println("❌ Error in getBookList: " + e.getMessage());
             e.printStackTrace();
         }
         return null;

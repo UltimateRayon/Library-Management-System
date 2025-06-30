@@ -12,7 +12,6 @@ import java.time.temporal.ChronoUnit;
 public class UserService {
 
     private final UserDAO userDAO = new UserDAO();
-    private User user;
 
     //Returns a User if credentials match, else null
     public User login(String id, String password) {
@@ -43,8 +42,9 @@ public class UserService {
             long timeDifference= ChronoUnit.DAYS.between(lastTime.toLocalDateTime(), currentTime.toLocalDateTime());
             //System.out.println(timeDifference);
             if(timeDifference>0){
-                userDAO.updateFine(timeDifference, user.getId());
-                    user.setFine(fine-(int)timeDifference);
+                if(userDAO.updateFine(user.getId(), timeDifference))
+                    //user.setFine((int)timeDifference);
+                    userDAO.fetchUserInfo(user);
                 return true;
             }
         }

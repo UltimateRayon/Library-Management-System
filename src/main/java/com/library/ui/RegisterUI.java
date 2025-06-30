@@ -4,17 +4,14 @@ import com.library.services.UserService;
 import com.library.utils.InputHandler;
 import com.library.utils.InputValidator;
 
-import java.lang.classfile.Label;
-
-
 public class RegisterUI {
-    private UserService userService = new UserService();
+    private final UserService userService = new UserService();
     public InputValidator passCheck=new InputValidator();
 
     public void setAllValuesForRegister() {
         System.out.println();
         System.out.println("\uD83D\uDC64 Register A New Account \uD83D\uDC64");
-        System.out.println("Input 0 To Cancel.");
+        System.out.println("Input 0 to Cancel.");
         System.out.println();
 
         String name = InputHandler.getString("Enter your full name: ");

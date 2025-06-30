@@ -8,7 +8,6 @@ import com.library.models.User;
 import java.util.List;
 
 public class TransactionService {
-    User user;
     UserDAO userdao=new UserDAO();
     BookDAO bookdao = new BookDAO();
     TransactionDAO trandao = new TransactionDAO();
@@ -25,7 +24,7 @@ public class TransactionService {
             if (isBookAvailable) {
                 if (user.getBorrowBook() < 5 && user.getFine() == 0) {
                     if (trandao.bookCheckOut(bookName, user.getId()) && bookdao.bookReduce(bookName) && userdao.borrowBookUpdate(user.getId(), 1)) {
-                        user.setBorrowBook(user.getBorrowBook() + 1);
+                        userdao.fetchUserInfo(user);
                         return "Success";
                     } else {
                         return "Error";
@@ -48,8 +47,12 @@ public class TransactionService {
         if (!hasBorrowed) {
             return "no book";
         }
+        int newFine=userdao.compareDate(bookName, user.getId());
+        if (trandao.bookCheckIn(bookName, user.getId()) && bookdao.bookIncrease(bookName) && userdao.borrowBookUpdate(user.getId(), -1) && userdao.updateFine(user.getId(), -newFine)) {
+            //user.setBorrowBook(user.getBorrowBook() - 1);
+            //user.setFine(-newFine);
+            userdao.fetchUserInfo(user);
 
-        if (trandao.bookCheckIn(bookName, user.getId()) && bookdao.bookIncrease(bookName) && userdao.borrowBookUpdate(user.getId(), -1)) {
             return "Successful";
         } else {
             return "error";

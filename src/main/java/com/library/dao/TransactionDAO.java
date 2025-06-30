@@ -92,7 +92,7 @@ public class TransactionDAO {
             while (rs.next()) {
                 String title = rs.getString("title");
                 Timestamp time= rs.getTimestamp("transaction_date");
-                history.add(title+" - "+time);
+                history.add("\n-Book Title: "+title+"\n-Checkout Time: "+time);
              }
         return history;
         } catch (SQLException e) {

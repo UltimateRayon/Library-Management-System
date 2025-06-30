@@ -11,7 +11,7 @@ public class LoginUI {
     public User setValueForLogIn() {
         System.out.println();
         System.out.println("🔐 Log In 🔐");
-        System.out.println("Input 0 To Cancel.");
+        System.out.println("Input 0 to Cancel.");
         System.out.println();
 
         String id = InputHandler.getString("Enter your ID: ");
@@ -26,7 +26,7 @@ public class LoginUI {
         User user = userService.login(id, password);
         if (user != null && userService.updateFine(user)) {
             System.out.println();
-            System.out.println("! Welcome Back, " + user.getName() + "!");
+            System.out.println("✅ Login Successful. Welcome Back, " + user.getName() + "!");
         } else {
             System.out.println();
             System.out.println("❌ Invalid ID Or Password. ❌");

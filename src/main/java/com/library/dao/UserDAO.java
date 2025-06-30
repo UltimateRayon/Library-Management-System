@@ -5,6 +5,7 @@ import com.library.utils.DatabaseConnection;
 
 import java.sql.*;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 public class UserDAO {
 
@@ -49,10 +50,13 @@ public class UserDAO {
         }
     }
 
-    public void updateFine(long time, String userId){
+    public boolean updateFine(String userId, long time){
         String sql = """
                 UPDATE users
-                SET fine=fine - ?,
+                SET fine=CASE
+                WHEN fine - ?<0 THEN 0
+                ELSE fine - ?
+                END,
                     last_login_time= ?
                 WHERE id=?;
                 """;
@@ -61,12 +65,15 @@ public class UserDAO {
 
             Timestamp currentTime=Timestamp.from(Instant.now());
             stmt.setInt(1, (int)time);
-            stmt.setTimestamp(2, currentTime);
-            stmt.setString(3, userId);
+            stmt.setInt(2, (int)time);
+            stmt.setTimestamp(3, currentTime);
+            stmt.setString(4, userId);
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.err.println("❌ Error updating fine and time: " + e.getMessage());
         }
+        return false;
     }
 
     public boolean borrowBookUpdate(String userId, int amount){
@@ -81,11 +88,49 @@ public class UserDAO {
 
             stmt.setInt(1, amount);
             stmt.setString(2, userId);
-            int rowsAffected = stmt.executeUpdate();
+            stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.err.println("❌ Error updating borrowed book: " + e.getMessage());
         }
         return false;
+    }
+
+    public int compareDate(String bookName, String id) {
+        String sql = "SELECT * FROM transaction_history WHERE user_id = ? and book_name= ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, id);
+            stmt.setString(2, bookName);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Timestamp checkoutTime=rs.getTimestamp("transaction_date");
+                Timestamp currentTime=Timestamp.from(Instant.now());
+                long timeDifference= ChronoUnit.DAYS.between(checkoutTime.toLocalDateTime(), currentTime.toLocalDateTime())-15;
+                return Math.max((int) timeDifference, 0);
+            }
+        } catch (SQLException e) {
+            System.err.println("❌ Error compare date: " + e.getMessage());
+        }
+        return 0;
+    }
+
+    public void fetchUserInfo(User user){
+        String sql = "SELECT * FROM users WHERE id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, user.getId());
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                        int fine=rs.getInt("fine");
+                        int borrowBook=rs.getInt("borrowed_books");
+                        Timestamp time=rs.getTimestamp("last_login_time");
+                        user.setUserValues(fine, borrowBook, time);
+            }
+        } catch (SQLException e) {
+            System.err.println("❌ Error fetching user: " + e.getMessage());
+        }
     }
 }

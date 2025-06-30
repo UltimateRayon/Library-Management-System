@@ -6,21 +6,22 @@ A simple Java-based Library Management System that allows users to register, log
 
 ## 🛠 Project Overview
 
-- Console-based user interface
-- PostgreSQL database integration using JDBC
-- User authentication system (register/login)
-- Book borrowing and returning system
-- User account details with current borrow status
+- A clean, Java & PostgreSQL‑powered system for managing library lending
+- Secure sign‑up and sign‑in with hashed passwords and built‑in duplicate‑ID checks
+- Effortless browsing or searching of available books
+- Smooth borrow/return workflow with a gentle 15‑day due‑date reminder and fine handling
+- Personalized dashboard showing your profile and active fine
 
 ---
 
 ## 🧾 Features
 
-- ✅ User registration and login (with password security)
-- 📖 View list of available books
-- 📥 Check out books
-- 📤 Return books
-- 👤 View personal account and checkout history
+- **Hassle‑free Registration**: prevents duplicate IDs and stores passwords securely with hashing
+- **Safe Login**: checks your password hash before you enter
+- **Book Discovery**: browse all titles or quickly search by name
+- **Borrow & Return**: check out books, track availability, and apply a mild fine after 15 days
+- **My Library Overview**: view your user details (excluding password) and active fines
+
 
 ---
 
@@ -34,6 +35,17 @@ A simple Java-based Library Management System that allows users to register, log
 | Maven (+ JDBC)   | Dependency & project management   |
 | JavaFX (GUI)     | Graphical User Interface          |
 | Git + GitHub     | Version control and collaboration |
+
+---
+
+## 📈 Project Completion
+
+🖥️ Console Version: **100%**  
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+
+🎨 GUI (JavaFX) Version: **40%**  
+🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
+
 
 ---
 
