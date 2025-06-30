@@ -9,7 +9,11 @@ CREATE TABLE users (
     id VARCHAR(50) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     phone VARCHAR(15) NOT NULL,
-    password VARCHAR(64) NOT NULL
+    password VARCHAR(64) NOT NULL,
+    fine INTEGER DEFAULT 0,
+    borrowed_books INTEGER DEFAULT 0,
+    last_login_time TIMESTAMP
+
 );
 
 --  book_collection table (id changed to string form)
@@ -27,7 +31,7 @@ CREATE TABLE transaction_history (
 
     transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP PRIMARY KEY,
     user_id VARCHAR(50) NOT NULL REFERENCES users(id),
-    book_name VARCHAR(50) NOT NULL REFERENCES book_collection(title),
+    book_name VARCHAR(50) NOT NULL REFERENCES book_collection(title)
 );
 
 

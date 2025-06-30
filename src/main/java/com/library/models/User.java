@@ -1,21 +1,29 @@
 package com.library.models;
 
+import java.sql.Timestamp;
+
 public class User {
-    private String id;         // Used as the unique login ID
-    private String name;       // User's full name
+    private String id;
+    private String name;
     private String password;   // Hashed password (never store plain text!)
     private String phone;
+    private int fine;
+    private int borrowBook;
+    private Timestamp time;
 
     // Default constructor (needed for JDBC or frameworks)
     public User() {
     }
 
     // Constructor with all fields
-    public User(String id, String name, String phone, String password) {
+    public User(String id, String name, String phone, String password, int fine, int borrowBook, Timestamp time) {
         this.id = id;
         this.name = name;
         this.phone=phone;
         this.password = password;
+        this.fine=fine;
+        this.borrowBook=borrowBook;
+        this.time=time;
     }
 
     // Getter for ID (used in DB lookups and session tracking)
@@ -56,6 +64,25 @@ public class User {
     // Setter for password (used to save hashed password during registration)
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getFine() {
+        return fine;
+    }
+
+    public int getBorrowBook() {
+        return borrowBook;
+    }
+
+    public Timestamp getTime() {
+        return time;
+    }
+
+
+    public void setUserValues(int fine, int borrowedBooks, Timestamp time){
+        this.fine=fine;
+        this.borrowBook=borrowedBooks;
+        this.time=time;
     }
 }
 
