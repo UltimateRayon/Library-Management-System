@@ -5,7 +5,7 @@ A simple Java-based Library Management System that allows users to register, log
 ---
 
 ## 🛠 Project Overview
-
+ 
 - A clean, Java & PostgreSQL‑powered system for managing library lending
 - Secure sign‑up and sign‑in with hashed passwords and built‑in duplicate‑ID checks
 - Effortless browsing or searching of available books
