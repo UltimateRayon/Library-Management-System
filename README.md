@@ -1,13 +1,3 @@
-## 📈 Project Completion
-
-🖥️ Console Version: **100%**  
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-
-🎨 GUI Version: **40%**  
-🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜
-
----
-
 # 📚 Library Management System
 
 A simple Java-based Library Management System that allows users to register, log in, view available books, check out and return books, and view account information. The system is built using Java, PostgreSQL, and follows a modular structure using DAO, service layers, and model classes. Initially console-based, with potential for future GUI enhancement.
