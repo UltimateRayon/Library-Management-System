@@ -92,20 +92,6 @@ OR in IntelliJ IDEA:
 
 - Right-click on `Main.java` → Click “Run”
 
-💡 Tip: If Maven asks for the exec plugin, add this snippet to your `pom.xml`:
-
-```xml
-<build>
-  <plugins>
-    <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>exec-maven-plugin</artifactId>
-      <version>3.1.0</version>
-    </plugin>
-  </plugins>
-</build>
-```
-
 ---
 
 ## 🎨 Running GUI (JavaFX) Version with Maven
@@ -161,6 +147,6 @@ Or open the Maven Tool Window in IntelliJ:
 
 ## 📄 License
 
-This project is part of an academic submission under the supervision of Lecturer Sobhana Jahan, Department of Computer Science and Engineering, Faculty of Science and Technology, Bangladesh University of Professionals (BUP).
+[This project is part of an academic submission](Submission-Info.md) under the supervision of Lecturer Sobhana Jahan, Department of Computer Science and Engineering, Faculty of Science and Technology, Bangladesh University of Professionals (BUP).
 
 It is intended strictly for educational and non-commercial use.
