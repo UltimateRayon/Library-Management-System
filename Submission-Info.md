@@ -13,7 +13,7 @@ This project was submitted to:
 
 ## 👨‍👩‍👧 Team Information
 
-- 🧑‍💻 Team Name: [Your Team Name Here]
+- 🧑‍💻 Team Name: ExceptionHandlers
 
 ## 👥 Team Members & Contributions
 
@@ -22,24 +22,24 @@ This project was submitted to:
    – Contributed to writing the README and submission info  
    – Developed DAO classes and wrote queries    
 
+2. 👩‍💻 [Mehedi Hassan Rafi](https://github.com/BigMaxrooKie)  
+   – Designed console-based MainMenuUI    
+   – Handled book listing, availability, and check-out logic  
+   – Implemented check-in/return functionality
+
 2. 👨‍💻 [Istiack Isty](https://github.com/Istiack-102)  
    – Implemented user authentication (login/register)    
    – Built TransactionService and logic    
-   – Designed console-based LoginUI and RegisterUI    
-
-3. 👩‍💻 [Mehedi Hassan Rafi](https://github.com/BigMaxrooKie)  
-   – Designed console-based MainMenuUI    
-   – Handled book listing, availability, and check-out logic  
-   – Implemented check-in/return functionality    
+   – Designed console-based LoginUI and RegisterUI        
 
 4. 👨‍💻 [Sami Azraf](https://github.com/SamiAzraf2000)  
    – Designed all Database tables  
    – Wrote queries for transaction logging  
-   – Integrated InputHandler and user input flow    
+   – Verified Database connections and codes    
 
 5. 👩‍💻 [Shamsul Islam Fahim](https://github.com/Samsu-GG)  
    – Worked on InputValidator and PasswordHelper  
    – Implemented Password encryption/decryption logic  
-   – Assisted with config file setup and code documentation  
+   – Created and Maintained Overdue Fine Logic  
 
 ---
